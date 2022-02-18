@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="c_student_wizard_form">
+            <field name="name">college student details</field>
+            <field name="model">c_m_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Student Details">
+                    <group>
+                        <field name="stu_name"/>
+                        <field name="stu_id"/>
+                    </group>
+                    <footer>
+                        <button name="submit_wizard_button" string="Submit Student detail" type="object" class="btn-success"/>
+                        <button string="cancel" class="btn-info" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="w_student_wizard">
+            <field name="name">Student Popup</field>
+<!--            <field name="type">ir.actions.act_window</field>-->
+            <field name="res_model">c_m_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="c_student_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+        <!--  actions  -->
+
+
+    </data>
+</odoo>
