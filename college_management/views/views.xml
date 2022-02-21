@@ -11,6 +11,7 @@
                     <field name="value2" widget="priority"/>
                     <field name="cllg_faculty" widget="many2many_tags_avatar" options="{'color_field':'color'}"/>
                     <field name="description" widget="char_emojis"/>
+
                     <field name="status" widget="badge" decoration-success="status=='draft'" decoration-info="status=='sent'" decoration-warning="status=='paid'" decoration-danger="status=='offer'" optional="show"/>
 <!--                    <field name="task"/>-->
 <!--                    <field name="x_signature"/>-->
@@ -24,6 +25,7 @@
                 <form>
                     <header>
                         <button name="object_button" string="College_object_button" type="object" class="btn-dark"/>
+                        <button name="search_orm" string="Function Button" type="object" class="btn-danger"/>
                         <button name="college_management.w_student_wizard" string="department_object_button" type="action" class="btn-warning"/>
                         <button string="cancel" class="btn-danger" special="cancel"/>
                         <field name="status" widget="statusbar" options="{'clickable':'1'}"/>
@@ -32,18 +34,36 @@
 <!--                    <button name="object_button" string="College_object_button" type="object" states="draft"-->
 <!--                            class="btn-primary" data-hotkey="g"/>-->
 <!--                </header>-->
-                <group>
-                        <field name="name"/>
-                        <field name="value" widget="countdown"/>
-                        <field name="value2" widget="priority" options="{'color_field':'color'}"/>
-                        <field name="description" widget="char_emojis"/>
-<!--                        <field name="g_num" widget="gauge"/>-->
-<!--                        <field name="task" widget="badge" decoration-success="task=='done'" decoration-info="task=='pending'" optional="show"/>-->
-                        <field name="interested" widget="boolean_button"/>
-                        <field name="lang_id" widget="selection"/>
-                        <field name="cllg_faculty" widget="many2many_tags_avatar" options="{'color_field':'color'}"/>
-<!--                        <field name="x_signature" widget="signature"/>-->
+
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="value" widget="countdown"/>
+                            <field name="value2" widget="priority" options="{'color_field':'color'}"/>
+                        </group>
+                        <group>
+                            <field name="description" widget="char_emojis"/>
+
+                            <!--                        <field name="g_num" widget="gauge"/>-->
+                            <!--                        <field name="task" widget="badge" decoration-success="task=='done'" decoration-info="task=='pending'" optional="show"/>-->
+                        </group>
+
+                        <group>
+                            <field name="interested" widget="boolean_button"/>
+                            <field name="lang_id" widget="selection"/>
+                            <field name="cllg_faculty" widget="many2many_tags_avatar"
+                                   options="{'color_field':'color'}"/>
+
+                            <!--                        <field name="call_num" />-->
+                            <!--                        <field name="x_signature" widget="signature"/>-->
+                        </group>
                     </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                         <field name="activity_ids"/>
+                        <field name="message_ids"/>
+
+                    </div>
                 </form>
             </field>
         </record>
