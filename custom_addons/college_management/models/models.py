@@ -21,7 +21,7 @@ class college_management(models.Model):
     _name = 'college_management.college_management'
     _description = 'college_management.college_management'
 
-    _inherit = 'mail.thread','mail.activity.mixin'
+    # _inherit = 'mail.thread','mail.activity.mixin'
     name = fields.Char()
     value = fields.Integer()
     value2 = fields.Selection([('bad','Bad'),('average','Average'),('good','Good'),('better','Better'),('best','Best'),('pro','Pro')],string="value2")
@@ -31,6 +31,7 @@ class college_management(models.Model):
     # task = fields.Selection([('done','Done'),('pending','Pending')],string="task",default="pending")
     # g_num = fields.Integer(compute="g_num")
     interested = fields.Boolean(string="interested")
+    cus_one_to_many = fields.One2many('college.cus','management_id',string="cus_one_to_many")
     lang_id = fields.Many2one('res.partner', string="lang_id")
     cllg_faculty = fields.Many2many('res.partner', string="cllg_faculty")
     # call_num = fields.Char('res.partner', string="call_num")
@@ -65,3 +66,11 @@ class college_management(models.Model):
     def _value_pc(self):
         for record in self:
             record.value2 = float(record.value) / 100
+
+class college_management_cus(models.Model):
+    _name = 'college.cus'
+    # _description = 'college_management_cus'
+
+    cus_id = fields.Many2one('res.partner',string="otm_id")
+    n_name = fields.Char(string="Naming")
+    management_id = fields.Many2one('college_management.college_management', string="management_id")

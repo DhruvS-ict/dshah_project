@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "College Management",
+    'name': "Dhruv",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -26,8 +26,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
-        'wizard/wizard_2.xml'
 
-        
     ],
+
+
 }

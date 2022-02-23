@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "College Management",
+    'name': "demo_addons",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -20,14 +20,15 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'contacts', 'sale_management'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
-        'wizard/wizard_2.xml'
-
+        'views/contacts.xml',
+        'views/sale.xml'
+        # 'views/sale.xml'
         
     ],
 }
