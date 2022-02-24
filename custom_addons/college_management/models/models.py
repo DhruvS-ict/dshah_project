@@ -28,6 +28,7 @@ class college_management(models.Model):
     description = fields.Text()
     # x_signature = fields.Char(string="Signature")
     status = fields.Selection([('draft','Draft'),('paid','Paid'),('offer','Offer'),('sent','Sent')],string="status")
+    gender = fields.Selection([('male','Male'),('female','Female'),('other','Other')],string="Gender")
     # task = fields.Selection([('done','Done'),('pending','Pending')],string="task",default="pending")
     # g_num = fields.Integer(compute="g_num")
     interested = fields.Boolean(string="interested")
@@ -40,26 +41,29 @@ class college_management(models.Model):
     def object_button(self):
         print("ffsssssss")
 
-    def search_orm(self):
+    def current_clients(self):
+        print("ttttttt")
+
+
+    def create_orm(self):
         for record in self:
-            record_to_update = self.env['college_management.college_management'].browse(13)
-            if record_to_update.exists():
-                vals={
-                    'name':'Jay','value':'197'
-                }
-                record_to_update.write(vals)
-            record_to_update = self.env['college_management.college_management'].browse(14)
-            if record_to_update.exists():
-                vals = {
-                    'name': 'Harshvardhan', 'value': '121'
-                }
-                record_to_update.write(vals)
-            record_to_update = self.env['college_management.college_management'].browse(15)
-            if record_to_update.exists():
-                vals = {
-                    'name': 'Chandradatt', 'value': '465'
-                }
-                record_to_update.write(vals)
+            vals=[{'name':'client_1','value':'11','status':'draft','interested':False,'gender':'male'},
+                  {'name':'client_2','value':'12','status':'sent','interested':True,'gender':'female'},
+                  {'name':'client_3','value':'13','status':'paid','interested':True,'gender':'male'},
+                  {'name':'client_4','value':'14','status':'offer','interested':False,'gender':'female'}]
+            self.env['college_management.college_management'].create(vals)
+
+
+    def write_orm(self):
+        for record in self:
+            record = self.write({'gender':'other',"name":"xyz"})
+
+
+    def unlink_orm(self):
+        for record in self:
+            record = self.env['college_management.college_management'].browse(109)
+            record.unlink()
+
 
 
     @api.depends('value')
