@@ -5,7 +5,6 @@ These are imported modules from module Odoo
 """
 from odoo import models, fields, api
 from odoo.addons.test_convert.tests.test_env import record
-
 """
 1)here through name created a model name for module college management.
 2)trough inherit, we inherited fields in class="oe_chatterlass" from mail.thread and mail.activity.mixin.
@@ -37,6 +36,10 @@ class college_management(models.Model):
     cllg_faculty = fields.Many2many('res.partner', string="cllg_faculty")
     # call_num = fields.Char('res.partner', string="call_num")
     cus_image = fields.Binary(string="cus_image")
+
+    _sql_constraints = [
+        ('name_uniq', 'unique (name)', "This name already exists ! Please enter unique nam  Kavishhh"),
+    ]
 
     def object_button(self):
         print("ffsssssss")

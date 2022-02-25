@@ -1,0 +1,67 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="smart_view_tree">
+            <field name="name">smart_view list</field>
+            <field name="model">smart.view</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="phone_no"/>
+                    <field name="age"/>
+                    <field name="residential_address"/>
+                    <field name="date"/>
+                    <field name="mail_id"/>
+                    <field name="dob"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="smart_view_form">
+            <field name="name">smart_view form</field>
+            <field name="model">smart.view</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button string="client order" type="object" name="smart_button" class="oe_stat_button"
+                                    icon="fa-list-ol"/>
+<!--                                <div>-->
+<!--                                    <field>-->
+<!--                                        <form>-->
+<!--                                            <field name="name"/>-->
+<!--                                            <field name="dob"/>-->
+<!--                                        </form>-->
+<!--                                    </field>-->
+<!--                                </div>-->
+<!--                            </button>-->
+                        </div>
+                        <group>
+                            <field name="name"/>
+                            <field name="phone_no" widget="phone"/>
+                            <field name="age"/>
+                            <field name="residential_address"/>
+                            <field name="date"/>
+                            <field name="mail_id" widget="email"/>
+                            <field name="dob"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="smart_view_action_window">
+            <field name="name">window</field>
+            <field name="res_model">smart.view</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+
+        <menuitem name="smart view" id="smart_id"/>
+
+
+        <menuitem name="menu_1" id="menu_1_id" parent="smart_id"/>
+        <menuitem name="sub_menu_1" id="sub_menu_1_id" parent="menu_1_id" action="smart_view_action_window"/>
+    </data>
+</odoo>
+
