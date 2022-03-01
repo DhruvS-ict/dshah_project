@@ -10,6 +10,7 @@ class birthDate(models.Model):
     description = fields.Text(string="Description")
     character_reference = fields.Char(string="Character Reference", )
     user_number = fields.Integer(string="User Number")
+    customer_reference = fields.Char()
     attach_docs = fields.Binary()
     cus_id = fields.Many2one('sale.order', string="cus_id")
     cus_details = fields.Many2many('sale.order', string="cus_details")

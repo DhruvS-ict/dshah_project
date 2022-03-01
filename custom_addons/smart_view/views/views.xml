@@ -1,9 +1,22 @@
 <odoo>
     <data>
+
+<!--        <record id="smart_view_search" model="ir.ui.view">-->
+<!--            <field name="name">smart_view search</field>-->
+<!--            <field name="model">smart.view</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <search>-->
+<!--                    <field name="name"/>-->
+<!--                    <field name="phone_no"/>-->
+<!--                </search>-->
+<!--            </field>-->
+<!--        </record>-->
+
         <record model="ir.ui.view" id="smart_view_tree">
             <field name="name">smart_view list</field>
             <field name="model">smart.view</field>
             <field name="arch" type="xml">
+<!--                <attribute name="optional">hide</attribute>-->
                 <tree>
                     <header>
                         <button name="submit_button" string="Submit" type="object" class="btn-success"/>
@@ -12,7 +25,7 @@
                     <field name="name"/>
                     <field name="phone_no"/>
                     <field name="age"/>
-                    <field name="residential_address"/>
+                    <field name="residential_address" optional="hide"/>
                     <field name="date"/>
                     <field name="mail_id"/>
                     <field name="dob"/>
@@ -52,6 +65,7 @@
                             <field name="mail_id" widget="email"/>
                             <field name="dob"/>
                             <field name="write_uid"/>
+<!--                            <field name="smart_test"/>-->
                         </group>
                     </sheet>
                     <div class="oe_chatter">

@@ -5,19 +5,21 @@ from odoo.addons.test_convert.tests.test_env import record
 from datetime import datetime
 from odoo.exceptions import ValidationError
 
+
 class smart_view(models.Model):
     _name = 'smart.view'
     """1) In that module Show chatter functionality."""
     _inherit = 'mail.thread','mail.activity.mixin'
     _description = "Created this module to display Smart button inside sheet in form view mode."
-    name = fields.Char(string="Name")
-    phone_no = fields.Char(string="Phone Number")
+    name = fields.Many2one('college_management.college_management',string="Name")
+    phone_no = fields.Char(string="Phone Number", related="name.phone_no")
     """2) On update of field values in the Form view it should reflect on Chatter. (Note: Take any 2 field of the object.)"""
     age = fields.Integer(string="Age", tracking=True)
     residential_address = fields.Text(string="Residential Address")
-    date = fields.Date(string='Date', default=datetime.today())
+    date = fields.Datetime(string='Date', default=fields.Datetime.now)
     mail_id = fields.Char(string="Mail ID")
     dob = fields.Date(string="Date of Birth")
+
 
 
     # _sql_constraints = [('raiseerror_uniq', 'unique (name)', "This name is already exists! Please enter unique name"),]

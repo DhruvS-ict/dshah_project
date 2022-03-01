@@ -8,10 +8,10 @@
             <!--            <xpath expr="//field[@name='partner_id']" position="after">-->
             <!--                <field name="sale_test"/>-->
             <!--            </xpath>-->
-            <!--            <field name="partner_id" position="after">-->
-            <!--                <field name="sale_test"/>-->
-
-            <!--            </field>-->
+            <field name="partner_id" position="after">
+                <field name="character_reference"/>
+                <field name="description"/>
+            </field>
         </field>
     </record>
 

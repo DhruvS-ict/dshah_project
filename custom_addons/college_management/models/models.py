@@ -22,6 +22,7 @@ class college_management(models.Model):
 
     # _inherit = 'mail.thread','mail.activity.mixin'
     name = fields.Char()
+    phone_no = fields.Char(string="Phone Number")
     value = fields.Integer()
     value2 = fields.Selection([('bad','Bad'),('average','Average'),('good','Good'),('better','Better'),('best','Best'),('pro','Pro')],string="value2")
     description = fields.Text()
