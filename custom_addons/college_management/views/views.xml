@@ -59,7 +59,7 @@
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="phone_no" widget="phone"/>
+<!--                            <field name="phone_no" widget="phone"/>-->
                             <field name="value"/>
                             <field name="value2" widget="priority" options="{'color_field':'color'}"/>
                         </group>
@@ -94,7 +94,15 @@
                                 </tree>
                             </field>
                         </page>
+                        <page string="notebook">
+                            <field name="client_otm">
+                                <tree>
+                                    <field name="address_id"/>
+                                </tree>
+                            </field>
+                        </page>
                     </notebook>
+
                     <!--                    <div class="oe_chatter">-->
                     <!--                        <field name="message_follower_ids"/>-->
                     <!--                         <field name="activity_ids"/>-->

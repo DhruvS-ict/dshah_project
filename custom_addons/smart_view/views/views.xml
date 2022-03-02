@@ -23,7 +23,7 @@
                     </header>
                     <field name="write_uid"/>
                     <field name="name"/>
-                    <field name="phone_no"/>
+<!--                    <field name="phone_no"/>-->
                     <field name="age"/>
                     <field name="residential_address" optional="hide"/>
                     <field name="date"/>
@@ -39,8 +39,9 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="write_orm" string="write_orm" type="object" class="btn-warning"/>
-                        <button name="create_orm" string="create_orm" type="object" class="btn-danger"/>
+                        <button name="write_orm" string="Write" type="object" class="btn-warning"/>
+                        <button name="create_orm" string="Create" type="object" class="btn-danger"/>
+                        <button name="browse_orm" string="Browse" type="object" class="btn-info"/>
                     </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
@@ -58,13 +59,14 @@
                         </div>
                         <group>
                             <field name="name"/>
-                            <field name="phone_no" widget="phone"/>
+<!--                            <field name="phone_no" widget="phone"/>-->
                             <field name="age"/>
                             <field name="residential_address"/>
                             <field name="date"/>
                             <field name="mail_id" widget="email"/>
                             <field name="dob"/>
                             <field name="write_uid"/>
+                            <field name="cus_one_to_many"/>
 <!--                            <field name="smart_test"/>-->
                         </group>
                     </sheet>
@@ -73,6 +75,17 @@
                         <field name="activity_ids"/>
                         <field name="message_ids"/>
                     </div>
+                    <notebook>
+                        <page string="one_to_many">
+                            <field name="cus_one_to_many">
+                                <tree>
+                                    <field name="cus_id"/>
+                                    <field name="n_name"/>
+                                    <field name="management_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </form>
             </field>
         </record>
