@@ -58,34 +58,35 @@
 <!--                            </button>-->
                         </div>
                         <group>
-                            <field name="name"/>
-<!--                            <field name="phone_no" widget="phone"/>-->
+                            <field name="name" widget="Many2one"/>
+                            <field name="phone_no" widget="phone"/>
                             <field name="age"/>
                             <field name="residential_address"/>
                             <field name="date"/>
                             <field name="mail_id" widget="email"/>
                             <field name="dob"/>
                             <field name="write_uid"/>
-                            <field name="cus_one_to_many"/>
+                            <field name="select"/>
+<!--                            <field name="cus_one_to_many"/>-->
 <!--                            <field name="smart_test"/>-->
                         </group>
                     </sheet>
-                    <div class="oe_chatter">
-                        <field name="message_follower_ids"/>
-                        <field name="activity_ids"/>
-                        <field name="message_ids"/>
-                    </div>
-                    <notebook>
-                        <page string="one_to_many">
-                            <field name="cus_one_to_many">
-                                <tree>
-                                    <field name="cus_id"/>
-                                    <field name="n_name"/>
-                                    <field name="management_id"/>
-                                </tree>
-                            </field>
-                        </page>
-                    </notebook>
+<!--                    <div class="oe_chatter">-->
+<!--                        <field name="message_follower_ids"/>-->
+<!--                        <field name="activity_ids"/>-->
+<!--                        <field name="message_ids"/>-->
+<!--                    </div>-->
+<!--                    <notebook>-->
+<!--                        <page string="one_to_many">-->
+<!--                            <field name="cus_one_to_many">-->
+<!--                                <tree>-->
+<!--                                    <field name="cus_id"/>-->
+<!--                                    <field name="n_name"/>-->
+<!--                                    <field name="management_id"/>-->
+<!--                                </tree>-->
+<!--                            </field>-->
+<!--                        </page>-->
+<!--                    </notebook>-->
                 </form>
             </field>
         </record>
