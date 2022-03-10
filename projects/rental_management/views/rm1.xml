@@ -1,0 +1,97 @@
+<odoo>
+    <data>
+        <record id="rental_management_search" model="ir.ui.view">
+            <field name="name">rental_management search</field>
+            <field name="model">rental.management</field>
+            <field name="arch" type="xml">
+                <search>
+                    <group string="Group By">
+                        <filter name="name" string="Name" context="{'group_by':'name'}"/>
+                    </group>
+                    <field name="customer_id"/>
+                    <field name="rental_type_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="rental_product_id"/>
+<!--                    <group string="Group By">-->
+<!--                        <fiter name="price" string="Price" context="{'group_by':'price'}"/>-->
+<!--                    </group>-->
+                    <field name="price"/>
+                    <field name="state"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="rental_management_tree">
+            <field name="name">rental_management list</field>
+            <field name="model">rental.management</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="customer_id"/>
+                    <field name="rental_type_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="rental_product_id"/>
+                    <field name="price"/>
+                    <field name="state"/>
+<!--                    <field name="purchase_id"/>-->
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="rental_management_form">
+            <field name="name">rental_management form</field>
+            <field name="model">rental.management</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar" options="{'clickable':'True'}"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="customer_id"/>
+                                <field name="rental_type_id"/>
+                                <field name="start_date"/>
+                            </group>
+                            <group>
+                                <field name="end_date"/>
+                                <field name="rental_product_id"/>
+                                <field name="price"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="rental_management_action_window">
+            <field name="name">Rental Management Window</field>
+            <field name="res_model">rental.management</field>
+            <field name="view_mode">search,tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="r_window">
+            <field name="name">Rental window</field>
+            <field name="res_model">rental.management</field>
+            <field name="view_mode">search,tree,form</field>
+        </record>
+
+
+        <menuitem name="rental management" id="rm_id"/>
+
+        <menuitem name="rental_management" id="rental_management_id" parent="rm_id"/>
+        <menuitem name="rental" id="rental_id" parent="rental_management_id" action="r_window"/>
+        <menuitem name="rental_type" id="rental_type_id" parent="rental_management_id" action="rt_window"/>
+
+    </data>
+</odoo>
+

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="22b01585-83bb-4914-86af-6c32b6762374" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/demo_addons/views/sale.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../addons/l10n_cr/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../addons/l10n_cr/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../odoo/addons/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../odoo/addons/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../odoo/addons/base/tests/test_misc.py" beforeDir="false" afterPath="$PROJECT_DIR$/../odoo/addons/base/tests/test_misc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../odoo/addons/test_data_module/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../odoo/addons/test_data_module/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../odoo/addons/test_data_module_install/tests/test_data_module_installed.py" beforeDir="false" afterPath="$PROJECT_DIR$/../odoo/addons/test_data_module_install/tests/test_data_module_installed.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../odoo/addons/test_lint/tests/test_dunderinit.py" beforeDir="false" afterPath="$PROJECT_DIR$/../odoo/addons/test_lint/tests/test_dunderinit.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="25BT4RsfOPYJGQPH9fQUuXIgMkn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="22b01585-83bb-4914-86af-6c32b6762374" name="Changes" comment="" />
+      <created>1644999289525</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1644999289525</updated>
+    </task>
+    <servers />
+  </component>
+</project>
