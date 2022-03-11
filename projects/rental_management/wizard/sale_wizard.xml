@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="sale_wizard_form">
+            <field name="name">sale_wizard form</field>
+            <field name="model">sale.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Sale Order Wizard">
+                    <group>
+                        <group>
+                            <field name="customer"/>
+                            <field name="customer_email"/>
+                            <field name="sales_person"/>
+                        </group>
+                        <group>
+                            <field name="sales_person_contact"/>
+                            <field name="payment_terms"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="submit" string="Submit" type="object"
+                                class="btn-success"/>
+                        <button string="cancel" class="btn-info" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="sales_order_wizard_popup">
+            <field name="name">Sale Order Popup</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.wizard</field>
+            <field name="view_mode">form</field>
+<!--            <field name="view_id" ref="s_o_wizard_form"/>-->
+            <field name="target">new</field>
+        </record>
+        <!--  actions  -->
+
+
+    </data>
+</odoo>

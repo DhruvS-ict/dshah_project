@@ -6,7 +6,7 @@ from odoo import models, fields, api
 class RentalManagement(models.Model):
     """This class is for fields & orm methods."""
     _name = 'rental.management'
-    _inherit = 'mail.thread','mail.activity.mixin'
+    _inherit = 'mail.thread', 'mail.activity.mixin'
     _description = "Created this module."
 
     name = fields.Char(string="Name", required=True, tracking=True)
@@ -20,18 +20,39 @@ class RentalManagement(models.Model):
     state = fields.Selection([('draft', 'Draft'), ('waiting', 'Waiting'),
                               ('approve', 'Approve'), ('cancel', 'Cancel')],
                              string="State")
+    dob_id = fields.Many2one('rental.management', string="Name & Date")
+    dob_ids = fields.Many2one('rental.management', string="Name & Date")
     # purchase_id = fields.Many2one('purchase.order')
 
     _sql_constraints = [('raiseerror_uniq', 'unique (name)',
-    "This name is already exists! Please enter unique name"),]
+                         "This name is already exists! Please enter unique name"), ]
+
+    # @api.model
+    # def default_get(self, fields):
+    #     rec = super(RentalManagement, self).default_get(fields)
+    #     rec['name'] = 'Kavish'
+    #     rec['customer_id'] = 3
+    #     return rec
+
+    def default_get(self, fields):
+        rec = super(RentalManagement, self).default_get(fields)
+        rec['name'] = 'Kavish'
+        rec['customer_id'] = 5
+        return rec
+
+    def name_get(self):
+        result=[]
+        for rec in self:
+            result.append((rec.id,'%s - [%s]'%(rec.name,rec.start_date)))
+        return result
 
 
-    # @api.constrains('age')
-    # def check_name(self):
-    #     for rec in self:
-    #         if rec.age <= 18:
-    #             raise ValidationError("Sorry your age is not valid.")
 
+    # def read_record(self):
+    #     """This function is created for search_method button.
+    #     It will give record id's according to domain(conditions.)"""
+    #     rec = self.env['res.partner'].read(['user_dob'])
+    #     print("----------------------------------------records = ", rec, "-----------------------------")
 
 
 class RentalType(models.Model):

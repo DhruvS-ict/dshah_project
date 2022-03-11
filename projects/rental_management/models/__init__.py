@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from . import rm
-from . import rm_page
-from . import saleorder_inherit
+from . import rental_management
+from . import product_template
+from . import sale_order
+from . import res_partner

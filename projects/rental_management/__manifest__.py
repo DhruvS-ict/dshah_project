@@ -26,11 +26,12 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'wizard/sale_wizard.xml',
+        'views/rental_type.xml',
+        'views/rental_management.xml',
+        'views/product_template.xml',
+        'views/sale_order.xml',
 
-        'views/rm2.xml',
-        'views/rm1.xml',
-        'views/rm_page.xml',
-        'views/saleorder.xml',
 
         
     ],

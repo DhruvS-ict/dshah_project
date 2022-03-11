@@ -11,6 +11,7 @@ class InheritSaleOrder(models.Model):
     mobile = fields.Char(string="Mobile")
     email = fields.Char(string="Email")
 
+
     @api.onchange('partner_id')
     def set_field(self):
         for rec in self:
