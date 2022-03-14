@@ -8,14 +8,12 @@
                 <header>
                     <button name="%(sales_order_wizard_popup)d" string="Sale Wizard" type="action" class="btn-warning"/>
                 </header>
-                <form>
-                    <field name="sale_order_template_id" position="after">
-                        <field name="mobile"/>
-                    </field>
-                    <field name="payment_term_id" position="after">
-                        <field name="email"/>
-                    </field>
-                </form>
+                <field name="validity_date" position="after">
+                    <field name="phone"/>
+                </field>
+                <field name="phone" position="after">
+                    <field name="email"/>
+                </field>
             </field>
         </record>
     </data>

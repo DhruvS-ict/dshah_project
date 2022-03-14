@@ -35,12 +35,14 @@ class RentalManagement(models.Model):
     #     return rec
 
     def default_get(self, fields):
+        """This is default get function."""
         rec = super(RentalManagement, self).default_get(fields)
         rec['name'] = 'Kavish'
         rec['customer_id'] = 5
         return rec
 
     def name_get(self):
+        """This name get function."""
         result=[]
         for rec in self:
             result.append((rec.id,'%s - [%s]'%(rec.name,rec.start_date)))
