@@ -1,7 +1,7 @@
 """This"""
-from datetime import datetime
-from odoo import models, fields, api
 
+from odoo import models, fields, api
+from datetime import datetime
 
 class RentalManagement(models.Model):
     """This class is for fields & orm methods."""
@@ -22,6 +22,9 @@ class RentalManagement(models.Model):
                              string="State")
     dob_id = fields.Many2one('rental.management', string="Name & Date")
     dob_ids = fields.Many2one('rental.management', string="Name & Date")
+    first_amount = fields.Integer(string="First Amount")
+    last_amount = fields.Integer(string="Last Amount")
+    total_amount = fields.Integer(string="Total Amount", compute="_compute_set_total_amount")
     # purchase_id = fields.Many2one('purchase.order')
 
     _sql_constraints = [('raiseerror_uniq', 'unique (name)',
@@ -34,9 +37,19 @@ class RentalManagement(models.Model):
     #     rec['customer_id'] = 3
     #     return rec
 
+    @api.depends('first_amount', 'last_amount')
+    def _compute_set_total_amount(self):
+        """This is api depends in which total_amount fields changes,
+        depends on other two fields."""
+        for rec in self:
+            print("----------------------------------------records = ", rec)
+            rec.total_amount = rec.first_amount * rec.last_amount
+
+
     def default_get(self, fields):
         """This is default get function."""
         rec = super(RentalManagement, self).default_get(fields)
+        print("-------------------------------------------------------",rec)
         rec['name'] = 'Kavish'
         rec['customer_id'] = 5
         return rec
@@ -50,11 +63,21 @@ class RentalManagement(models.Model):
 
 
 
-    # def read_record(self):
-    #     """This function is created for search_method button.
-    #     It will give record id's according to domain(conditions.)"""
-    #     rec = self.env['res.partner'].read(['user_dob'])
-    #     print("----------------------------------------records = ", rec, "-----------------------------")
+    def read_record(self):
+        """This function is created for search_method button.
+        It will give record id's according to domain(conditions.)"""
+        rec = self.env['res.partner'].search([])
+        print("----------------------------------------records = ", rec, "-----------------------------")
+        return rec
+
+    def searchread_method(self):
+        """This function is created for search_read method button.
+        It will do a search & return a list of dict."""
+        rec = self.env['res.partner'].search_read([('name','!=',False)],['name'])
+        for res in rec:
+            print("----------------------------------------records = ", res, "-----------------------------")
+        return rec
+
 
 
 class RentalType(models.Model):
@@ -65,3 +88,4 @@ class RentalType(models.Model):
     name = fields.Char(string="Name")
     code = fields.Char(string="Customer")
     description = fields.Char(string="Description")
+

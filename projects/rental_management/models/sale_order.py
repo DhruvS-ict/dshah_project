@@ -25,3 +25,9 @@ class InheritSaleOrder(models.Model):
         for rec in self:
             if rec.payment_term_id not in rec.partner_id.property_supplier_payment_term_id:
                 raise UserError("Your Payment Term is different.Please enter similar Payment Terms.")
+
+    # def action_confirm(self):
+    #     res = super(InheritSaleOrder, self).action_confirm()
+    #     # test = self.env['sale.order'].search_read(domain=[('id', '=', 32)], fields=['partner_id'], read_kwargs=None)
+    #     # print (test,"test----------------------------")
+    #     return res

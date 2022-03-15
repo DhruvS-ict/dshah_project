@@ -23,3 +23,4 @@ class InheritSaleOrder(models.Model):
             domain = ['|','|',('name',operator,name),('phone',operator,name),('email',operator,name)]
         return self._search(domain + args, limit=limit)
 
+

@@ -18,17 +18,18 @@ class SaleWizard(models.TransientModel):
         """This function is for button."""
         print("FFFFFFFFFFFFF")
 
-
+    @api.model
     def default_get(self, fields):
         """This is default get function."""
-        rec = super(SaleWizard, self).default_get(fields)
-        rec['customer_id'] = 8
-        rec['customer_email'] = '@gmail.com'
-        rec['sales_person_id'] = 2
-        rec['sales_person_contact'] = '+91-'
-        rec['payment_terms_id'] = 2
-        return rec
-
-
+        res = super(SaleWizard, self).default_get(fields)
+        sale_order_rec = self.env['sale.order'].browse(self.env.context.get('active_id'))
+        res.update({
+            'customer_id' : sale_order_rec.partner_id,
+            'customer_email' : sale_order_rec.partner_id.email,
+            'sales_person_id' : sale_order_rec.user_id,
+            'sales_person_contact' : sale_order_rec.user_id.phone,
+            'payment_terms_id' : sale_order_rec.payment_term_id
+        })
+        return res
 
 
