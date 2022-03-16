@@ -25,10 +25,19 @@ class RentalManagement(models.Model):
     first_amount = fields.Integer(string="First Amount")
     last_amount = fields.Integer(string="Last Amount")
     total_amount = fields.Integer(string="Total Amount", compute="_compute_set_total_amount")
+    email = fields.Char(string="Email", compute="_compute_set_email")
     # purchase_id = fields.Many2one('purchase.order')
 
     _sql_constraints = [('raiseerror_uniq', 'unique (name)',
                          "This name is already exists! Please enter unique name"), ]
+
+
+    def browsemethod(self):
+        """This is Browse method."""
+        res = self.env['rental.management'].browse(1)
+        print("--------------------------------------------------------------------------------",res)
+
+
 
     # @api.model
     # def default_get(self, fields):
@@ -44,6 +53,15 @@ class RentalManagement(models.Model):
         for rec in self:
             print("----------------------------------------records = ", rec)
             rec.total_amount = rec.first_amount * rec.last_amount
+
+    @api.depends('name')
+    def _compute_set_email(self):
+        """This is api depends in which total_amount fields changes,
+        depends on other two fields."""
+        for rec in self:
+            print("----------------------------------------records = ", rec)
+            rec.email = rec.name + "@gmail.com"
+
 
 
     def default_get(self, fields):

@@ -31,6 +31,7 @@
         'views/rental_management.xml',
         'views/product_template.xml',
         'views/sale_order.xml',
+        'views/res_partner.xml',
 
 
         

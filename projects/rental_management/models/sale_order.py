@@ -19,12 +19,22 @@ class InheritSaleOrder(models.Model):
                 rec.phone = rec.partner_id.phone
                 rec.email = rec.partner_id.email
 
-    @api.constrains('payment_term_id')
-    def check_name(self):
-        """This api constrains."""
+    # @api.constrains('payment_term_id')
+    # def check_name(self):
+    #     """This api constrains."""
+    #     for rec in self:
+    #         if rec.payment_term_id not in rec.partner_id.property_supplier_payment_term_id:
+    #             raise UserError("Your Payment Term is different.Please enter similar Payment Terms.")
+
+    def action_confirm(self):
+        """This is overriding action confirm."""
         for rec in self:
-            if rec.payment_term_id not in rec.partner_id.property_supplier_payment_term_id:
-                raise UserError("Your Payment Term is different.Please enter similar Payment Terms.")
+            count = len(rec.order_line)
+            if count > 3:
+                raise UserError("You can only add max 3 lines per order.")
+            else:
+                return super(InheritSaleOrder, self).action_confirm()
+
 
     # def action_confirm(self):
     #     res = super(InheritSaleOrder, self).action_confirm()

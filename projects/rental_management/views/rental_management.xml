@@ -49,6 +49,7 @@
                     <header>
                         <button name="read_record" string="Read" type="object" class="btn btn-warning"/>
                         <button name="searchread_method" string="Search Read" type="object" class="btn btn-info"/>
+                        <button name="browsemethod" string="Browse" type="object" class="btn btn-success"/>
                         <field name="state" widget="statusbar" options="{'clickable':'True'}"/>
                     </header>
                     <sheet>
@@ -67,8 +68,8 @@
                                 <field name="price"/>
                                 <field name="dob_id"/>
                                 <field name="dob_ids"/>
-<!--                                <field name="email"/>-->
                                 <field name="total_amount"/>
+                                <field name="email"/>
                             </group>
                         </group>
                     </sheet>
