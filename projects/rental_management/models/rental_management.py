@@ -32,10 +32,44 @@ class RentalManagement(models.Model):
                          "This name is already exists! Please enter unique name"), ]
 
 
+    def read_record(self):
+        """This function is created for search_method button.
+        It will give record id's according to domain(conditions.)"""
+        rec = self.env['res.partner'].search([])
+        print("----------------------------------------read Method = ", rec, "-----------------------------")
+        return {
+            'effect': {
+                'fadeout': 'fast',
+                'message': 'Record read successfully',
+                'type': 'rainbow_man',
+            }
+        }
+
+    def searchread_method(self):
+        """This function is created for search_read method button.
+        It will do a search & return a list of dict."""
+        rec = self.env['res.partner'].search_read([('name','!=',False)],['name'])
+        for res in rec:
+            print("----------------------------------------search_read Method = ", res, "-----------------------------")
+        return {
+            'effect': {
+                'fadeout': 'fast',
+                'message': 'Record searched and read successfully',
+                'type': 'rainbow_man',
+            }
+        }
+
     def browsemethod(self):
         """This is Browse method."""
-        res = self.env['rental.management'].browse(1)
-        print("--------------------------------------------------------------------------------",res)
+        res = self.env['rental.management'].browse([1,2])
+        print("--------------------------------------------------browse Method = ",res,"-------------------------------")
+        return {
+            'effect': {
+                'fadeout': 'fast',
+                'message': 'Record browsed successfully',
+                'type': 'rainbow_man',
+            }
+        }
 
 
 
@@ -81,23 +115,6 @@ class RentalManagement(models.Model):
 
 
 
-    def read_record(self):
-        """This function is created for search_method button.
-        It will give record id's according to domain(conditions.)"""
-        rec = self.env['res.partner'].search([])
-        print("----------------------------------------records = ", rec, "-----------------------------")
-        return rec
-
-    def searchread_method(self):
-        """This function is created for search_read method button.
-        It will do a search & return a list of dict."""
-        rec = self.env['res.partner'].search_read([('name','!=',False)],['name'])
-        for res in rec:
-            print("----------------------------------------records = ", res, "-----------------------------")
-        return rec
-
-
-
 class RentalType(models.Model):
     """This class is for fields & orm methods."""
     _name = 'rental.type'
@@ -106,4 +123,44 @@ class RentalType(models.Model):
     name = fields.Char(string="Name")
     code = fields.Char(string="Customer")
     description = fields.Char(string="Description")
+
+
+
+
+class ResConfigSettings(models.TransientModel):
+    _inherit = 'res.config.settings'
+
+    is_checked = fields.Boolean(string="Check", config_parameter='rental_management.active')
+    description = fields.Char(config_parameter='rental_management.description')
+    seting_id = fields.Many2one('res.partner', config_parameter='rental_management.seting_id', string="Settings")
+
+    # is_active = fields.Boolean(string='Active', config_parameter='rental_management.active')
+
+
+    # @api.model
+    # def get_values(self):
+    #     res = super(ResConfigSettings, self).get_values()
+    #
+    #     res['is_checked'] = self.env['ir.config_parameter'].get_param(
+    #         'rental_management.is_checked')
+    #     res['test_char'] = self.env['ir.config_parameter'].get_param(
+    #         'test_char')
+    #
+    #     return res
+    #
+    # @api.model
+    # def set_values(self):
+    #     self.env['ir.config_parameter'].set_param(
+    #         'rental_management.is_checked', self.is_checked)
+    #     self.env['ir.config_parameter'].set_param(
+    #         'test_char', self.test_char)
+    #     super(ResConfigSettings, self).set_values()
+
+    @api.onchange('is_checked')
+    def set_field(self):
+        """This is onchange api model."""
+        for rec in self:
+            if not rec.is_checked:
+                rec.description = False
+                rec.seting_id = False
 

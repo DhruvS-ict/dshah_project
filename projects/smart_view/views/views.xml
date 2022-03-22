@@ -58,8 +58,8 @@
                     </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
-                            <button string="client order" type="object" name="smart_button" class="oe_stat_button"
-                                    icon="fa-list-ol"/>
+                            <button string="client order" type="action" name="%(rental_management.rental_management_action_window)d"
+                                    class="oe_stat_button" icon="fa-list-ol"/>
 <!--                                <div>-->
 <!--                                    <field>-->
 <!--                                        <form>-->

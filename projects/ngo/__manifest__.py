@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "demo_addons",
+    'name': "orphans_organization",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -20,16 +20,22 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'contacts', 'sale_management'],
+    'depends': ['base'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
-        'views/contacts.xml',
-        'views/sale.xml',
-        # 'views/sale.xml'
-        
+        'views/ngo_bool.xml',
+        'views/wizards.xml',
+        'views/o_member.xml',
+        'views/o_donation.xml',
+        'views/orphans_expense.xml',
+        'views/orphans_advertise.xml',
+
     ],
-    "license": "LGPL-3"
+    # only loaded in demonstration mode
+
+    'license':'LGPL-3',
+
 }

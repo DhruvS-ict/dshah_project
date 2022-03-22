@@ -29,9 +29,9 @@ class SmartView(models.Model):
         """This function is created for submit button."""
         return self
 
-    def smart_button(self):
-        """This function is created for smart button."""
-        return self
+    # def smart_button(self):
+    #     """This function is created for smart button."""
+    #     return self
 
     def create_orm(self):
         """This function is created for create button.

@@ -2,7 +2,7 @@
 
 from odoo import models, fields, api
 import datetime
-
+from dateutil.relativedelta import relativedelta
 
 class InheritSaleOrder(models.Model):
     """This class is for fields & orm methods."""
@@ -40,15 +40,25 @@ class InheritSaleOrder(models.Model):
     #         print("--------------------------------------------------------------------------------",rec.age)
 
 
+    # @api.depends('birth_date')
+    # def _compute_set_age(self):
+    #     """This is depends."""
+    #     today = datetime.date.today()
+    #     for rec in self:
+    #         if rec.birth_date:
+    #             rec.age = today.year - rec.birth_date.year - ((today.month, today.day) < (rec.birth_date.month, rec.birth_date.day))
+    #         else:
+    #             rec.age = 0
+
+
+
     @api.depends('birth_date')
     def _compute_set_age(self):
-        """This is depends."""
-        today = datetime.date.today()
-        for rec in self:
-            if rec.birth_date:
-                rec.age = today.year - rec.birth_date.year - ((today.month, today.day) < (rec.birth_date.month, rec.birth_date.day))
-            else:
-                rec.age = 0
+        if self.birth_date:
+            yrs = relativedelta(datetime.date.today(), self.birth_date)
+            self.age = yrs.years
+        else:
+            self.age = 0
 
 
 
