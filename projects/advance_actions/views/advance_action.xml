@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+        <record id="advance_action_search" model="ir.ui.view">
+            <field name="name">advance_action search</field>
+            <field name="model">advance.action</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="advance_action"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="advance_action_tree">
+            <field name="name">advance_action list</field>
+            <field name="model">advance.action</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="advance_action"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="advance_action_form">
+            <field name="name">advance_action form</field>
+            <field name="model">advance.action</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="advance_action"/>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="advance_action_action_window">
+            <field name="name">Advance Action Window</field>
+            <field name="res_model">advance.action</field>
+            <field name="view_mode">search,tree,form</field>
+        </record>
+
+        <menuitem name="advance action" id="aa_id"/>
+
+        <menuitem name="advance_action" id="advance_action_id" parent="aa_id"/>
+        <menuitem name="advance" id="advance_id" parent="advance_action_id" action="advance_action_action_window"/>
+
+    </data>
+</odoo>

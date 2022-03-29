@@ -8,6 +8,7 @@
                 <field name="cus_img" position="after">
                     <field name="birth_date"/>
                     <field name="age"/>
+                    <field name="customer_rank"/>
                 </field>
             </field>
         </record>

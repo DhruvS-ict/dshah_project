@@ -14,45 +14,45 @@
                             <label for="is_checked"/>
                             <field name="is_checked"/>
                             <div class="text-muted">
-                                 please fill the checkbox
+                                please fill the checkbox
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 o_setting_box">
                             <label for="description"/>
                             <field name="description" widget="html" attrs="{'invisible':[('is_checked','=',False)]}"/>
                             <div class="text-muted">
-                                 It's visible now
+                                It's visible now
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 o_setting_box">
                             <label for="seting_id"/>
                             <field name="seting_id" attrs="{'invisible':[('is_checked','=',False)]}"/>
                             <div class="text-muted">
-                                 It's visible now
+                                It's visible now
                             </div>
                         </div>
-<!--                        <div class="col-12 col-lg-6 o_setting_box">-->
-<!--                            <div class="o_setting_left_pane">-->
-<!--                                <field name="is_checked"/>-->
-<!--                            </div>-->
-<!--                            <div class="o_setting_right_pane">-->
-<!--                                <label for="is_checked" string="Test Char"/>-->
-<!--                                <div class="text-muted">-->
-<!--                                    Test Label-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-12 col-lg-6 o_setting_box">-->
-<!--                            <div class="o_setting_left_pane">-->
-<!--                                <field name="is_active"/>-->
-<!--                            </div>-->
-<!--                            <div class="o_setting_right_pane">-->
-<!--                                <label for="is_active" string="Test Char"/>-->
-<!--                                <div class="text-muted">-->
-<!--                                    Direct check active field-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
+                        <!--                        <div class="col-12 col-lg-6 o_setting_box">-->
+                        <!--                            <div class="o_setting_left_pane">-->
+                        <!--                                <field name="is_checked"/>-->
+                        <!--                            </div>-->
+                        <!--                            <div class="o_setting_right_pane">-->
+                        <!--                                <label for="is_checked" string="Test Char"/>-->
+                        <!--                                <div class="text-muted">-->
+                        <!--                                    Test Label-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+                        <!--                        <div class="col-12 col-lg-6 o_setting_box">-->
+                        <!--                            <div class="o_setting_left_pane">-->
+                        <!--                                <field name="is_active"/>-->
+                        <!--                            </div>-->
+                        <!--                            <div class="o_setting_right_pane">-->
+                        <!--                                <label for="is_active" string="Test Char"/>-->
+                        <!--                                <div class="text-muted">-->
+                        <!--                                    Direct check active field-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
                     </div>
 
                 </xpath>
@@ -68,7 +68,6 @@
                     <group string="Group By">
                         <filter name="name" string="Name" context="{'group_by':'name'}"/>
                     </group>
-                    <field name="customer_id"/>
                     <field name="rental_type_id"/>
                     <field name="start_date"/>
                     <field name="end_date"/>
@@ -87,8 +86,10 @@
             <field name="model">rental.management</field>
             <field name="arch" type="xml">
                 <tree>
+<!--                    <header>-->
+<!--                        <button name="create_rent_one" string="Create" type="object" class="btn-success"/>-->
+<!--                    </header>-->
                     <field name="name"/>
-                    <field name="customer_id"/>
                     <field name="rental_type_id"/>
                     <field name="start_date"/>
                     <field name="end_date"/>
@@ -107,6 +108,7 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
+<!--                        <button name="create_rent_one" string="Create" type="object" class="btn btn-Danger"/>-->
                         <button name="read_record" string="Read" type="object" class="btn btn-warning"/>
                         <button name="searchread_method" string="Search Read" type="object" class="btn btn-info"/>
                         <button name="browsemethod" string="Browse" type="object" class="btn btn-success"/>
@@ -116,7 +118,6 @@
                         <group>
                             <group>
                                 <field name="name"/>
-                                <field name="customer_id"/>
                                 <field name="rental_type_id"/>
                                 <field name="start_date"/>
                                 <field name="first_amount"/>
@@ -130,6 +131,14 @@
                                 <field name="dob_ids"/>
                                 <field name="total_amount"/>
                                 <field name="email"/>
+                                <field name="rental_image"/>
+                                <field name="rent_ids">
+                                    <tree editable="bottom">
+                                        <field name="rent_payment_id"/>
+                                        <field name="rent_client"/>
+                                        <field name="management_id"/>
+                                    </tree>
+                                </field>
                             </group>
                         </group>
                     </sheet>
@@ -143,6 +152,32 @@
         </record>
 
 
+        <record model="ir.ui.view" id="rental_management_kanban">
+            <field name="name">rental_management kanban</field>
+            <field name="model">rental.management</field>
+            <field name="arch" type="xml">
+                <kanban class="o_res_partner_kanban" sample="1">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
+                                <div t-attf-class="oe_kanban_global_click">
+                                    <field name="rental_image" widget="image"/>
+                                    <div class="o_kanban_details">
+                                        <br/>
+                                        <br/>
+                                        <field name="name"/>
+                                        -
+                                        <field name="email"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
         <record model="ir.actions.act_window" id="rental_management_action_window">
             <field name="name">Rental Management Window</field>
             <field name="res_model">rental.management</field>
@@ -152,7 +187,7 @@
         <record model="ir.actions.act_window" id="r_window">
             <field name="name">Rental window</field>
             <field name="res_model">rental.management</field>
-            <field name="view_mode">search,tree,form</field>
+            <field name="view_mode">search,tree,form,kanban</field>
         </record>
 
 

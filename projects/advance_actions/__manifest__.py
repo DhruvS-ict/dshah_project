@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Rental Management",
+    'name': "Advance Actions",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -20,21 +20,12 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base',
-                'product', 'sale_management', 'mail', 'purchase'],
+    'depends': ['base'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'reports/report_paper_format.xml',
-        'reports/report_sub_main_template.xml',
-        'reports/report_action.xml',
-        'wizard/sale_wizard.xml',
-        'views/rental_type.xml',
-        'views/rental_management.xml',
-        'views/product_template.xml',
-        'views/sale_order.xml',
-        'views/res_partner.xml',
+        'views/advance_action.xml',
 
     ],
     "license": "LGPL-3"

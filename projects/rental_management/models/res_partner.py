@@ -4,6 +4,7 @@ from odoo import models, fields, api
 import datetime
 from dateutil.relativedelta import relativedelta
 
+
 class InheritSaleOrder(models.Model):
     """This class is for fields & orm methods."""
     _inherit = 'res.partner'
@@ -11,13 +12,17 @@ class InheritSaleOrder(models.Model):
 
     birth_date = fields.Date(string="Date Of Birth")
     age = fields.Integer(string="Age", compute="_compute_set_age")
-
+    customer_rank = fields.Integer(string="Customer Rank")
 
     def name_get(self):
         """This is name get function."""
-        result=[]
+        res = self.env['sale.order'].browse(self.env.context.get('active_id'))
+        result = []
         for rec in self:
-            result.append((rec.id,'%s - [%s]'%(rec.name,rec.character_reference)))
+            if rec.mobile:
+                result.append((rec.id, '%s - %s' % (rec.name, rec.mobile)))
+            else:
+                result.append((rec.id, '%s' % rec.name))
         return result
 
     def _name_search(self, name, args=None, operator='ilike', limit=100):
@@ -25,10 +30,8 @@ class InheritSaleOrder(models.Model):
         args = args or []
         domain = []
         if name:
-            domain = ['|','|',('name',operator,name),('phone',operator,name),('email',operator,name)]
+            domain = ['|', '|', ('name', operator, name), ('phone', operator, name), ('email', operator, name)]
         return self._search(domain + args, limit=limit)
-
-
 
     # @api.depends('birth_date')
     # def _compute_set_age(self):
@@ -38,7 +41,6 @@ class InheritSaleOrder(models.Model):
     #     for rec in self:
     #         rec.age = int((today_date-rec.birth_date).days / 365)
     #         print("--------------------------------------------------------------------------------",rec.age)
-
 
     # @api.depends('birth_date')
     # def _compute_set_age(self):
@@ -50,8 +52,6 @@ class InheritSaleOrder(models.Model):
     #         else:
     #             rec.age = 0
 
-
-
     @api.depends('birth_date')
     def _compute_set_age(self):
         if self.birth_date:
@@ -59,7 +59,3 @@ class InheritSaleOrder(models.Model):
             self.age = yrs.years
         else:
             self.age = 0
-
-
-
-

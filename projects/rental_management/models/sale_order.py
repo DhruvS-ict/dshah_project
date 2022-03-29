@@ -10,6 +10,37 @@ class InheritSaleOrder(models.Model):
 
     phone = fields.Char(string="Mobile")
     email = fields.Char(string="Email")
+    customer_rank = fields.Integer(string="Customer Rank", related="partner_id.customer_rank")
+
+    def action_sale_order(self):
+        print("SALEEEEEEEEEEE", self)
+        self.write({
+            'phone': 55555
+        })
+
+    def action_sale_order_1(self):
+        print("5555555555555555555", self)
+        records_ids = self.env['res.partner'].search([])
+        for rec in records_ids:
+            print("00000000000000000", rec)
+            rec.write({
+                'phone': 5555555555
+            })
+
+
+    @api.onchange('customer_rank')
+    def set_tags(self):
+        """This is onchange api model.
+        1) When SO is created Check If  Customer has "Customer Rank"
+        greater than 5 than the new Tag "Best Customer"
+        should be added for that Customer."""
+        for rec in self:
+            if rec.customer_rank >= 5:
+                rec.write({'tag_ids':[(4,9,0)]})
+            else:
+                rec.write({'tag_ids':[(2,9,0)]})
+
+
 
     @api.onchange('partner_id')
     def set_field(self):
@@ -41,3 +72,8 @@ class InheritSaleOrder(models.Model):
     #     # test = self.env['sale.order'].search_read(domain=[('id', '=', 32)], fields=['partner_id'], read_kwargs=None)
     #     # print (test,"test----------------------------")
     #     return res
+
+
+
+
+
