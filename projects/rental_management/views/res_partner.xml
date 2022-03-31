@@ -6,9 +6,12 @@
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
                 <field name="cus_img" position="after">
+                    <!--                    <group>-->
+                    <field name="customer_rank"/>
                     <field name="birth_date"/>
                     <field name="age"/>
-                    <field name="customer_rank"/>
+                    <!--                        <field name="customer_rank"/>-->
+                    <!--                    </group>-->
                 </field>
             </field>
         </record>

@@ -44,17 +44,10 @@ class SelectProducts(models.TransientModel):
     _name = 'select.products'
     _description = 'select_products'
 
-    product_ids = fields.Many2many('sale.order.line', string="Product IDs")
-
-
+    product_ids = fields.Many2many('product.product', string="Product IDs")
 
     def select_product_on_click(self):
-        """
-        function to update sale order lines when specific products are selected in wizard
-        """
-        res = self.env['sale.order']
-        active_id = self.env.context.get('active_id')
-        record = res.browse(active_id)
-
-        for rec in self.product_ids:
-            record.write({"order_line": [(4, rec.id)]})
+        # if self.product_ids:
+        rec = self.env[self._context.get('active_model', [])].browse(self._context.get('active_ids', []))
+        for res in self.product_ids:
+            rec.write({'order_line': [(0, 0, {'product_id': res.id})]})

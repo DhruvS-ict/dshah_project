@@ -10,7 +10,7 @@ class InheritSaleOrder(models.Model):
 
     phone = fields.Char(string="Mobile")
     email = fields.Char(string="Email")
-    customer_rank = fields.Integer(string="Customer Rank", related="partner_id.customer_rank")
+    # customer_rank = fields.Integer(string="Customer Rank", related="partner_id.customer_rank")
 
     def action_sale_order(self):
         print("SALEEEEEEEEEEE", self)
@@ -28,17 +28,13 @@ class InheritSaleOrder(models.Model):
             })
 
 
-    @api.onchange('customer_rank')
-    def set_tags(self):
-        """This is onchange api model.
-        1) When SO is created Check If  Customer has "Customer Rank"
-        greater than 5 than the new Tag "Best Customer"
-        should be added for that Customer."""
-        for rec in self:
-            if rec.customer_rank >= 5:
-                rec.write({'tag_ids':[(4,9,0)]})
-            else:
-                rec.write({'tag_ids':[(2,9,0)]})
+    @api.model
+    def create(self, vals):
+        res = super(InheritSaleOrder, self).create(vals)
+        if res.partner_id.customer_rank > 5:
+            best_customer_tag_id = self.env.ref("rental_management.res_partner_category_best_customer")
+            res.partner_id.write({'category_id': [(4, best_customer_tag_id.id)]})
+        return res
 
 
 

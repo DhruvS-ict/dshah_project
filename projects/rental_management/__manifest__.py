@@ -26,6 +26,7 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'data/res_partner_category_data.xml',
         'reports/report_paper_format.xml',
         'reports/report_sub_main_template.xml',
         'reports/report_action.xml',

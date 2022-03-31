@@ -12,7 +12,7 @@ class InheritSaleOrder(models.Model):
 
     birth_date = fields.Date(string="Date Of Birth")
     age = fields.Integer(string="Age", compute="_compute_set_age")
-    customer_rank = fields.Integer(string="Customer Rank")
+    # customer_rank = fields.Integer(string="Customer Rank")
 
     def name_get(self):
         """This is name get function."""
@@ -59,3 +59,4 @@ class InheritSaleOrder(models.Model):
             self.age = yrs.years
         else:
             self.age = 0
+
