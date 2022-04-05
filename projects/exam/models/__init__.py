@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from . import advance_action
-from . import hr_employee
+from . import exam
+from . import res_config_setting
 from . import res_partner
 from . import sale_order
 

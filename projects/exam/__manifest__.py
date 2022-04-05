@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Advance Actions",
+    'name': "Exam",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -25,11 +25,12 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/advance_action.xml',
-        'views/hr_employee_wizard.xml',
+        'wizard/sale_wizard.xml',
+        'views/exam.xml',
+        'views/res_config_setting.xml',
         'views/res_partner.xml',
         'views/sale_order.xml',
-        'wizard/xl_wizard.xml',
+
     ],
     "license": "LGPL-3"
 }

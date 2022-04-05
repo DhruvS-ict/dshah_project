@@ -1,0 +1,30 @@
+<odoo>
+     <data>
+        <record id="sale_order__server_action" model="ir.actions.server">
+            <field name="name">SO creation</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_sale_order"/>
+            <field name="binding_model_id" ref="model_sale_order"/>
+            <field name="binding_view_types">tree,form</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = {
+            "name" : "Exam Wizard",
+            "type": "ir.actions.act_window",
+            "view_mode": "form",
+            "res_model": "sale.wizard",
+            "target": "new",
+            }
+            </field>
+        </record>
+    </data>
+</odoo>
+
+
+
+
+
+
+
+
+
