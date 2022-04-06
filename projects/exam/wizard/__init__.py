@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from . import sale_wizard
+from . import res_wizard

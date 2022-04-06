@@ -1,10 +1,10 @@
 <odoo>
      <data>
-        <record id="sale_order__server_action" model="ir.actions.server">
+        <record id="res_partner_server_action" model="ir.actions.server">
             <field name="name">SO creation</field>
             <field name="type">ir.actions.server</field>
-            <field name="model_id" ref="model_sale_order"/>
-            <field name="binding_model_id" ref="model_sale_order"/>
+            <field name="model_id" ref="model_res_partner"/>
+            <field name="binding_model_id" ref="model_res_partner"/>
             <field name="binding_view_types">tree,form</field>
             <field name="state">code</field>
             <field name="code">
@@ -12,8 +12,9 @@
             "name" : "Exam Wizard",
             "type": "ir.actions.act_window",
             "view_mode": "form",
-            "res_model": "sale.wizard",
+            "res_model": "res.wizard",
             "target": "new",
+                "context": {'active_ids': records.ids}
             }
             </field>
         </record>

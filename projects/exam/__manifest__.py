@@ -25,11 +25,11 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'wizard/sale_wizard.xml',
+        'wizard/res_wizard.xml',
         'views/exam.xml',
         'views/res_config_setting.xml',
         'views/res_partner.xml',
-        'views/sale_order.xml',
+        # 'views/res_action.xml',
 
     ],
     "license": "LGPL-3"
