@@ -60,6 +60,38 @@
         </record>
 
 
+
+
+
+
+
+         <record id="rental_management_server_action" model="ir.actions.server">
+            <field name="name">SO creation</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_rental_management"/>
+            <field name="binding_model_id" ref="model_rental_management"/>
+            <field name="binding_view_types">tree,form</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = {
+            "name" : "Employee Wizard",
+            "type": "ir.actions.act_window",
+            "view_mode": "form",
+            "res_model": "xls.rent",
+            "target": "new"
+            }
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+
+
         <record id="rental_management_search" model="ir.ui.view">
             <field name="name">rental_management search</field>
             <field name="model">rental.management</field>
@@ -108,7 +140,7 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-<!--                        <button name="create_rent_one" string="Create" type="object" class="btn btn-Danger"/>-->
+<!--                        <button name="create_excel_report" string="Generate XLS Report" type="object" class="btn btn-Danger"/>-->
                         <button name="read_record" string="Read" type="object" class="btn btn-warning"/>
                         <button name="searchread_method" string="Search Read" type="object" class="btn btn-info"/>
                         <button name="browsemethod" string="Browse" type="object" class="btn btn-success"/>

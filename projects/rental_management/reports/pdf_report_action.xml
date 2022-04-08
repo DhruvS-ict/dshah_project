@@ -13,4 +13,6 @@
             <field name="paperformat_id" ref="paperformat_rental_id"/>
         </record>
     </data>
+
+
 </odoo>

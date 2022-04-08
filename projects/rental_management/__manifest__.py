@@ -27,9 +27,10 @@
     'data': [
         'security/ir.model.access.csv',
         'data/res_partner_category_data.xml',
-        'reports/report_paper_format.xml',
-        'reports/report_sub_main_template.xml',
-        'reports/report_action.xml',
+        # 'reports/pdf_report_paper_format.xml',
+        # 'reports/pdf_report_sub_main_template.xml',
+        # 'reports/pdf_report_action.xml',
+        # 'reports/xls_report.xml',
         'wizard/sale_wizard.xml',
         'views/rental_type.xml',
         'views/rental_management.xml',

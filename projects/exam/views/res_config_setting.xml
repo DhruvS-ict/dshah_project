@@ -9,7 +9,6 @@
                     <div class="app_settings_block" data-string="Exam" string="Exam" data-key="exam">
                         <h2>Module Installation</h2>
                         <div class="row mt16 o_settings_container" name="catalog_setting_container">
-
                             <div class="col-12 col-lg-6 o_setting_box">
                                 <label for="module_website"/>
                                 <field name="module_website"/>

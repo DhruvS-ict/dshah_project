@@ -1,6 +1,8 @@
 """This"""
 from datetime import datetime
 from odoo import models, fields, api
+
+
 # from odoo.exceptions import ValidationError
 
 
@@ -18,7 +20,8 @@ class SmartView(models.Model):
     date = fields.Datetime(string='Date', default=datetime.now())
     mail_id = fields.Char(string="Mail ID")
     dob = fields.Date(string="Date of Birth")
-    select = fields.Selection([('male','Male'),('female','Female')],string="Select")
+    select = fields.Selection([('male', 'Male'), ('female', 'Female')], string="Select")
+
     # cus_one_to_many = fields.One2many('smart.cus','management_id',string="cusonetomany",
     #                                   related="name.cus_one_to_many")
 
@@ -40,10 +43,10 @@ class SmartView(models.Model):
         # self.message_post(body="xyz has created recent record.")
         self.env['smart.view'].create(vals)
         return {
-            'effect':{
-                'fadeout':'fast',
-                'message':'Record created successfully',
-                'type':'rainbow_man',
+            'effect': {
+                'fadeout': 'fast',
+                'message': 'Record created successfully',
+                'type': 'rainbow_man',
             }
         }
 
@@ -61,25 +64,23 @@ class SmartView(models.Model):
     def search_method(self):
         """This function is created for search_method button.
         It will give record id's according to domain(conditions.)"""
-        search_rec = self.env['smart.view'].search([('name','=','Kavish'),('age','>','18')])
-        print("----------------------------------------search_rec = ",search_rec,"-----------------------------")
+        search_rec = self.env['smart.view'].search([('name', '=', 'Kavish'), ('age', '>', '18')])
+        print("----------------------------------------search_rec = ", search_rec, "-----------------------------")
 
     def count(self):
         """This function is created for search-count_method button.
         It will give total count(numbers) of record according to domain(conditions.)"""
-        count_rec = (self.env['smart.view'].search_count([('age','>','40')]))
+        count_rec = (self.env['smart.view'].search_count([('age', '>', '40')]))
         print("-------------------------------------------count_rec = ", count_rec, "-------------------------------")
 
-
-
     @api.model
-    def create(self,vals):
+    def create(self, vals):
         """This function is created for calling Super."""
         res = super(SmartView, self).create(vals)
         if vals.get('select') == 'male':
-            res['name'] = "Mr."+res['name']
+            res['name'] = "Mr." + res['name']
         elif vals.get('select') == 'female':
-            res['name'] = "Mrs."+res['name']
+            res['name'] = "Mrs." + res['name']
         return res
 
     @api.model
@@ -89,10 +90,6 @@ class SmartView(models.Model):
         res['name1'] = res['name']
         return res
 
-
-
-
-
 # class CollegeManagementCus(models.Model):
 #     """This class is created for one to many field."""
 #     _name = 'smart.cus'
@@ -101,26 +98,26 @@ class SmartView(models.Model):
 #     management_id = fields.Many2one('college_management.college_management',
 #     string="management_id")
 
-    # @api.constrains('age')
-    # def check_age(self):
-    #     for rec in self:
-    #         if rec.age <= 18:
-    #             raise ValidationError("Sorry your age is not valid.")
-    #
-    # @api.constrains('name')
-    # def check_name(self):
-    #     for rec in self:
-    #         if (rec.name).isnumeric:
-    #             raise ValidationError("This is not a valid name.")
-    #
-    # @api.constrains('residential_address')
-    # def check_name(self):
-    #     for rec in self:
-    #         if 'Gujarat' not in rec.residential_address:
-    #             raise ValidationError("Sorry ! You are outsider from Gujarat.")
+# @api.constrains('age')
+# def check_age(self):
+#     for rec in self:
+#         if rec.age <= 18:
+#             raise ValidationError("Sorry your age is not valid.")
+#
+# @api.constrains('name')
+# def check_name(self):
+#     for rec in self:
+#         if (rec.name).isnumeric:
+#             raise ValidationError("This is not a valid name.")
+#
+# @api.constrains('residential_address')
+# def check_name(self):
+#     for rec in self:
+#         if 'Gujarat' not in rec.residential_address:
+#             raise ValidationError("Sorry ! You are outsider from Gujarat.")
 
 
-    # @api.depends('value')
-    # def _value_pc(self):
-    #     for record in self:
-    #         record.value2 = float(record.value) / 100
+# @api.depends('value')
+# def _value_pc(self):
+#     for record in self:
+#         record.value2 = float(record.value) / 100

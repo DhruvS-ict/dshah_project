@@ -1,6 +1,5 @@
 <odoo>
     <data>
-
         <record model="ir.ui.view" id="excel_wizard_form">
             <field name="name">excel_wizard form</field>
             <field name="model">excel.wizard</field>
@@ -8,11 +7,11 @@
                 <form string="Excel Report Wizard">
                     <group>
                         <group>
-                            <field name="employee"/>
-                            <field name="start_date"/>
+                            <field name="employee_ids"/>
+                            <field name="start"/>
                         </group>
                         <group>
-                            <field name="end_date"/>
+                            <field name="end"/>
                             <field name="excel_file"/>
                         </group>
                     </group>
@@ -32,6 +31,5 @@
             <field name="target">new</field>
         </record>
         <!--  actions  -->
-
     </data>
 </odoo>
