@@ -51,22 +51,39 @@ class ExcelWizard(models.TransientModel):
             row += 1
             col = 0
             sheet.write(row, col, records.name, formathead2)
-            for res in data.search([('employee_id', '=', records.id)]):
-                row += 1
+
+            updated_row = row
+            selected_row = data.search([('employee_id', '=', records.id),
+                                        ('date','>=',self.start),
+                                        ('date','<=',self.end)])
+            for project in selected_row:
                 col = 1
-                sheet.write(row, col, res.project_id.name, formathead2)
-            for res in data.search([('employee_id', '=', records.id)]):
-                row += 1
+                sheet.write(updated_row, col, project.project_id.name, formathead2)
+                updated_row += 1
+
+            updated_row = row
+            for task in selected_row:
                 col = 2
-                sheet.write(row, col, res.task_id.name, formathead2)
-            for res in data.search([('employee_id', '=', records.id)]):
-                row += 1
+                sheet.write(updated_row, col, task.task_id.name, formathead2)
+                updated_row += 1
+
+            updated_row = row
+            for res in selected_row:
                 col = 3
-                sheet.write(row, col, res.name, formathead2)
-            for res in data.search([('employee_id', '=', records.id)]):
-                row += 1
+                sheet.write(updated_row, col, res.name, formathead2)
+                updated_row += 1
+
+            updated_row = row
+            total_hours = 0
+            for amount in selected_row:
+                # line = data.search_count([])
                 col = 4
-                sheet.write(row, col, res.unit_amount, formathead2)
+                total_hours += amount.unit_amount
+                sheet.write(updated_row, col, amount.unit_amount, formathead2)
+                # browse_list = selected_row.browse([])
+                updated_row += 1
+            sheet.write(updated_row, col, "Total hour : %f" % total_hours, formathead2)
+            row = updated_row
 
 
         fp = BytesIO()
