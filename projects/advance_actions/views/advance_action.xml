@@ -37,13 +37,13 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="send_email" string="Send Email" type="object" class="btn-info"/>
+                        <button name="email_send" string="Send Email" type="object" class="btn-info"/>
                         <field name="state" widget="statusbar" options="{'clickable':True}"/>
                     </header>
                     <group>
                         <field name="advance_users"/>
-                        <field name="user_mail_address" widget="email"/>
-                        <field name="customer_mail_address"/>
+                        <field name="from_email" widget="email"/>
+                        <field name="to_email" widget="email"/>
                     </group>
                 </form>
             </field>

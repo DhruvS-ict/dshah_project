@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Advance Actions",
+    'name': "Invoice Lines",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -20,17 +20,14 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'sale_management', 'contacts', 'hr', 'mail'],
+    'depends': ['base', 'sale_management', 'contacts', 'hr', 'account'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'data/email_template.xml',
-        'views/advance_action.xml',
-        'views/hr_employee_wizard.xml',
-        'views/res_partner.xml',
-        'views/sale_order.xml',
-        'wizard/xl_wizard.xml',
+        'views/account_move_line.xml',
+        'views/invoice_lines.xml',
+
     ],
     "license": "LGPL-3"
 }
