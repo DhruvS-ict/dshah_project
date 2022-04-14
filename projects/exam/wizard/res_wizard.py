@@ -11,11 +11,6 @@ class SaleWizard(models.TransientModel):
 
     def create_so(self):
         print("-------------------------------------------SSSSSSS--------------------------------------")
-        current_id = self._context.get('active_ids')
-        print("---------------------------------current_id : ", current_id)
-        # crt_record = self.env['sale.order']
-        # print("________________________________crt_record :", crt_record)
-        # class_envrt = self.env['order.many']
         lst = []
         for res in self.order_record_ids:
             lst.append((0, 0, {
@@ -23,10 +18,14 @@ class SaleWizard(models.TransientModel):
                 'product_uom_qty': res.order_quantity,
                 'price_unit': res.order_unit_price
             }))
-        vals = {
-            'order_record_ids': lst
+        for rec in self._context.get('active_ids'):
+            vals = self.env['sale.order'].create({'partner_id': rec, 'order_line': lst})
+            print("--------------------", vals)
+        return {
+            'type': 'ir.actions.act_url',
+            'target': 'self',
+            'url': 'http://localhost:15000/web?debug=1#cids=1&menu_id=214&action=316&model=sale.order&view_type=list'
         }
-        self.env['sale.order'].create(vals)
 
 
 class SaleOneToMany(models.TransientModel):
@@ -35,5 +34,5 @@ class SaleOneToMany(models.TransientModel):
 
     res_record_id = fields.Many2one('res.wizard', string="Res Record")
     order_product_id = fields.Many2one('product.product', string="Product")
-    order_quantity = fields.Integer(string="Quantity")
-    order_unit_price = fields.Float(string="Unit Price")
+    order_quantity = fields.Float(string="Quantity")
+    order_unit_price = fields.Float(string="Unit Price", related='order_product_id.list_price')

@@ -25,8 +25,10 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'views/account_move.xml',
         'views/account_move_line.xml',
         'views/invoice_lines.xml',
+        'views/res_partner.xml',
 
     ],
     "license": "LGPL-3"
