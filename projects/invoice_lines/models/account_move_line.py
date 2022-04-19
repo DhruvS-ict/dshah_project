@@ -9,7 +9,7 @@ class InvoiceLines(models.Model):
     _description = "Created this module."
 
     delivery_address = fields.Many2one('res.partner', string="Delivery Address")
-    vendor = fields.Many2one('res.partner', string="Vendor")
+    vendor = fields.Many2one('res.partner', string="Vendor", domain=[('supplier_rank', '>', 0)])
     vendor_price = fields.Float(string="Vendor Price")
     planned_gp = fields.Float(string="Planned GP")
     description = fields.Text(string="Description", compute="_compute_merging_two_fields")

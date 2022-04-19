@@ -7,7 +7,7 @@
             <field name="binding_model_id" ref="model_account_move"/>
             <field name="binding_view_types">list,form</field>
             <field name="state">code</field>
-            <field name="code">records.generate_bill()</field>
+            <field name="code">action = records.generate_bill()</field>
         </record>
     </data>
 </odoo>

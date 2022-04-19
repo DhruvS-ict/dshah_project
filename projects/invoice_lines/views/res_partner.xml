@@ -5,11 +5,13 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-                <field name="category_id" position="after">
-                    <!--                    <group>-->
+                <field name="vat" position="after">
                     <field name="supplier_rank"/>
-                    <!--                    </group>-->
-
+                    <label for="token_no"/>
+                    <div class="o_row">
+                        <field name="token_no"/>
+                        <button name="generate_random_number" type="object" string="Click" class="btn-info"/>
+                    </div>
                 </field>
             </field>
         </record>
