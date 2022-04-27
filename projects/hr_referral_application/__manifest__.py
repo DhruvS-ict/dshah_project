@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Invoice Lines",
+    'name': "hr referral application",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -20,17 +20,12 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'sale_management', 'contacts', 'hr', 'account', 'website'],
+    'depends': ['base', 'hr', 'hr_recruitment'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/account_move.xml',
-        'views/account_move_line.xml',
-        'views/invoice_lines.xml',
-        'views/res_partner.xml',
-        'views/res_partner_controllers.xml',
-        'views/website_form.xml',
+        'views/hr_referral_application.xml',
 
     ],
     "license": "LGPL-3"

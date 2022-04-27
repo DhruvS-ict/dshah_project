@@ -20,17 +20,22 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'sale_management', 'contacts', 'hr'],
+    'depends': ['base', 'sale_management', 'contacts', 'hr', 'website', "invoice_lines"],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'wizard/res_wizard.xml',
+        'views/css_form.xml',
         'views/exam.xml',
+        'views/exam_web_form.xml',
         'views/res_config_setting.xml',
         'views/res_partner.xml',
         # 'views/res_action.xml',
 
     ],
+    'assets': {'web.assets_frontend': [
+            'exam/static/src/css/form.css',
+        ], },
     "license": "LGPL-3"
 }
