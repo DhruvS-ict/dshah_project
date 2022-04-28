@@ -9,4 +9,9 @@ class InvoiceLines(models.Model):
     _description = "Created this module."
 
     invoices_name = fields.Char(string="Name")
+    invoices_email = fields.Char(string="Email")
+    invoices_salary = fields.Float(string="Salary")
+    invoices_summary = fields.Text(string="Summary")
+    invoices_stages = fields.Selection([('draft', 'Draft'), ('approved', 'Approved'),
+                               ('cancel', 'cancel')], string="Stages")
 

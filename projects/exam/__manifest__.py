@@ -29,6 +29,7 @@
         'views/css_form.xml',
         'views/exam.xml',
         'views/exam_web_form.xml',
+        'views/invoice_line_form.xml',
         'views/res_config_setting.xml',
         'views/res_partner.xml',
         # 'views/res_action.xml',

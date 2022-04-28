@@ -25,15 +25,18 @@
             <field name="model">invoice.lines</field>
             <field name="arch" type="xml">
                 <form>
-                    <!--                    <header>-->
-                    <!--                        <button name="read_record" string="Read" type="object" class="btn btn-warning"/>-->
-                    <!--                        <button name="searchread_method" string="Search Read" type="object" class="btn btn-info"/>-->
-                    <!--                        <button name="browsemethod" string="Browse" type="object" class="btn btn-success"/>-->
-                    <!--                        <field name="state" widget="statusbar" options="{'clickable':'True'}"/>-->
-                    <!--                    </header>-->
+                    <header>
+<!--                        <button name="read_record" string="Read" type="object" class="btn btn-warning"/>-->
+<!--                        <button name="searchread_method" string="Search Read" type="object" class="btn btn-info"/>-->
+<!--                        <button name="browsemethod" string="Browse" type="object" class="btn btn-success"/>-->
+                        <field name="invoices_stages" widget="statusbar" options="{'clickable':'True'}"/>
+                    </header>
                     <sheet>
                         <group>
                             <field name="invoices_name"/>
+                            <field name="invoices_email"/>
+                            <field name="invoices_salary"/>
+                            <field name="invoices_summary"/>
                         </group>
                     </sheet>
                     <!--                                <field name="rent_ids">-->
