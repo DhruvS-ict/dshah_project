@@ -10,14 +10,22 @@ class HrReferralApplication(models.Model):
 
     name = fields.Char(string="Name", required=True)
     email = fields.Char(string="Email")
-    referral_name = fields.Many2one('hr.employee', string="Referral Name")
-    degree = fields.Many2one('hr.recruitment.degree', string="Degree")
-    department = fields.Many2one('hr.job', string="Department")
+    referral_name_id = fields.Many2one('hr.employee', string="Referral Name")
+    degree_id = fields.Many2one('hr.recruitment.degree', string="Degree")
+    department_id = fields.Many2one('hr.job', string="Department")
     expected_salary = fields.Float(string="Expected Salary")
     summary = fields.Text(string="Summary")
     expected_joining_date = fields.Date(string="Expected Joining Date")
     stages = fields.Selection([('draft', 'Draft'), ('approved', 'Approved'),
                                ('cancel', 'cancel')], string="Stages")
+
+    def approved_func(self):
+        print("AAA")
+        for rec in self:
+            rec.stages = 'approved'
+
+    def create_application(self):
+        print("CCC")
 
 
 

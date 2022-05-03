@@ -17,9 +17,9 @@
                 <tree>
                     <field name="name"/>
                     <field name="email"/>
-                    <field name="referral_name"/>
-                    <field name="degree"/>
-                    <field name="department"/>
+                    <field name="referral_name_id"/>
+                    <field name="degree_id"/>
+                    <field name="department_id"/>
                     <field name="expected_salary"/>
                     <field name="expected_joining_date"/>
                     <field name="stages"/>
@@ -33,14 +33,16 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <field name="stages" widget="statusbar"/>
+                        <button name="approved_func" string="Approve" type="object" class="oe_info"/>
+                        <button name="create_application" string="Create Application" type="object" class="oe_success" attrs="{'invisible': [('stages', '!=', 'approved')]}"/>
+                        <field name="stages" widget="statusbar" options="{'clickable':'True'}"/>
                     </header>
                     <group>
                         <field name="name"/>
                         <field name="email" widget="email"/>
-                        <field name="referral_name"/>
-                        <field name="degree"/>
-                        <field name="department"/>
+                        <field name="referral_name_id"/>
+                        <field name="degree_id"/>
+                        <field name="department_id"/>
                         <field name="expected_salary"/>
                         <field name="expected_joining_date"/>
                     </group>
@@ -56,7 +58,9 @@
 
         <menuitem name="hr referral application" id="h_r_a_id" action="hr_referral_application_action_window"/>
 
-        <menuitem name="referral application" id="application_id" parent="h_r_a_id"/>
+        <menuitem name="referral application" id="application_id" parent="h_r_a_id" action="hr_referral_application_action_window"/>
+
+        <menuitem name="Referral Program" id="program_id" parent="h_r_a_id" action="hr_referral_application_action_window"/>
 
     </data>
 </odoo>
