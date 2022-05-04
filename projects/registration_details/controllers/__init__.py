@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from . import referral_program_form
+from . import registration_form

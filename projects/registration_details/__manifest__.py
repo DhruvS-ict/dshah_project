@@ -26,11 +26,12 @@
     'data': [
         'security/ir.model.access.csv',
         'views/registration_details.xml',
+        'views/registration_form.xml',
 
     ],
-    # 'assets': {'web.assets_frontend': [
-    #     'hr_referral_application/static/src/css/referral_program_form.css',
-    # ], },
+    'assets': {'web.assets_frontend': [
+        'registration_details/static/src/css/registration_details_form.css',
+    ]},
     'application': True,
     "license": "LGPL-3"
 }

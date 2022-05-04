@@ -13,16 +13,8 @@ class RegistrationDetails(models.Model):
     registration_id = fields.Many2one('res.partner', string="Name", required=True)
     mail = fields.Char(string="Email")
     mobile_number = fields.Char(string="Mobile Number")
-    country = fields.Selection([('singapore', 'Singapore'), ('india', 'India'),
-                               ('pakistan', 'Pakistan'), ('china', 'China'),
-                                ('bhutan', 'Bhutan'), ('srilanka', 'Srilanka'),
-                                ('russia', 'Russia'), ('japan', 'Japan'),
-                                ('turkey', 'Turkey'), ('iran', 'Iran')], string="Country")
-    state = fields.Selection([('gujarat', 'Gujarat'), ('mp', 'MP'),
-                              ('Maharashtra', 'Maharashtra'), ('goa', 'Goa'),
-                              ('rajasthan', 'Rajasthan'), ('punjab', 'Punjab'),
-                              ('haryana', 'Haryana'), ('karnataka', 'Karnataka'),
-                              ('kerala', 'Kerala'), ('telangana', 'Telangana')], string="State")
+    country = fields.Many2one('res.country', string="Country")
+    state = fields.Many2one('res.country.state', string="State")
     educational_qualification = fields.One2many('registration.one', 'detail_id',
                                                 string="Educational Qualification")
     stage = fields.Selection([('draft', 'Draft'), ('approved', 'Approved'),
@@ -67,8 +59,8 @@ class RegistrationOneToMany(models.Model):
                 rec.calculate_difference = year - int(rec.pass_out_year)
             else:
                 rec.calculate_difference = 0
-
-
+    #
+    #
 
 
 # Backend
